@@ -1,0 +1,10 @@
+---
+- name: Testando Variaveis
+  hosts: rocky
+  vars_files: /home/andersoncc/Estudos/Ansible/varsfile.yaml
+  tasks:
+   - name: DNF | Install packges
+     ansible.builtin.dnf:
+       name: "{{ packages }}"
+       state: latest
+       update_cache: true

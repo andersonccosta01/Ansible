@@ -1,0 +1,21 @@
+---
+
+- name: Update Rock Linux Servers - Starting Deploy
+  hosts: rocky
+  tasks:
+   - name: DNF | Update System
+     become: true
+     ansible.builtin.dnf:
+       name: "*"
+       state: latest
+       update_cache: true
+
+- name: Update Debian Linux Servers - Starting Deploy
+  hosts: debian
+  tasks:
+   - name: Apt| Update System
+     become: true
+     ansible.builtin.apt:
+       name: "*"
+       state: latest
+       update_cache: true

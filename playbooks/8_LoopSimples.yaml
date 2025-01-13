@@ -1,0 +1,23 @@
+---
+
+- name: Loop Simples
+  hosts: all
+  tasks:
+  
+   - name: Adicionando usuários
+     ansible.builtin.user:
+      name: "{{ item }}"
+      state: present
+     loop:
+     - testuser1
+     - testuser2
+
+   - name: Adicionando usuarios ao grupos
+     ansible.builtin.user:
+      name: "{{ item.name }}"
+      state: present
+      groups:
+        - "{{ item.group }}"
+     loop:
+      - {name: 'testuser1', group: 'wheel'}
+      - {name: 'testuser2', group: 'root'}

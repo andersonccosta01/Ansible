@@ -1,0 +1,8 @@
+---
+
+- name: Ansible Facts vars
+  hosts: all
+  tasks:
+   - name: DEBUG | Ansible Facts
+     ansible.builtin.debug:
+       msg: "{{ ansible_lsb }}"

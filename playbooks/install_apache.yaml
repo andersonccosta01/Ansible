@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: update repository index
+    ansible.builtin.dnf:
+      update_cache: true
+    when: "{{ ansible_distribution == 'Rocky' }}"
+
+  - name: Install apache2 package
+    ansible.builtin.apt:
+      name: apache2
+      state: latest
+    when: "{{ ansible_distribution == 'Debian' }}"
+
+...
